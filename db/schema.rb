@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(version: 2020_02_19_115019) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
