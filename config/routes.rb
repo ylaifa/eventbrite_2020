@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'profiles/show'
-  get 'profiles/new'
-  get 'profiles/edit'
   devise_for :users 
   resources :profiles
   resources :events
