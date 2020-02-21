@@ -3,7 +3,6 @@
   <h5 class="card-title">E-mail:</h5>
   <p class="card-text"><%= current_user.email %></p><p><%= link_to "Edit email/password", edit_user_registration_path, :class => "btn btn-secondary btn-xl text-uppercase js-scroll-trigger"%></p>
 </div> 
-
 <div class="card w-100">
   <div class="card-body">
     <h5 class="card-title">First name:</h5>
@@ -15,9 +14,7 @@
     <%= link_to "Edit your profile infos", edit_profile_path(@profile), :class => "btn btn-secondary btn-xl text-uppercase js-scroll-trigger"%>
   </div>
 </div>
-
 <h1 class="display-4">Your Events</h1>
-
 <ul class="list-group">
   <% current_user.events.where(admin: current_user.id).each do |event| %>
 
@@ -25,7 +22,5 @@
       <%= event.title %>
       <%= link_to "Go to this Event", event_path(event.id), :class => "btn btn-primary btn-xl text-uppercase js-scroll-trigger"%>
     </li>
-  
   <% end %>
-
 </ul>
