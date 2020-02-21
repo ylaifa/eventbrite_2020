@@ -59,6 +59,8 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.action_mailer.default_url_options = { :host => 'https://eventbrite-2020.herokuapp.com' }
+
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "eventbrite_2020_#{Rails.env}"
@@ -92,5 +94,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'eventbrite-2020.herokuapp.com' }
 end
