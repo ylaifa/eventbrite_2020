@@ -18,8 +18,6 @@ class Event < ApplicationRecord
     has_many :attendances
     has_many :users, through: :attendances
 
-  
-  
     def end_date
         start_date + duration * 60
     end
@@ -35,6 +33,4 @@ class Event < ApplicationRecord
     def is_multiple_of_5
         errors.add(:duration, "has to be a multiple of 5") unless duration % 5 == 0 
     end
-
-  
 end
