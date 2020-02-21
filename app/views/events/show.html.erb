@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm" >
+            <h1 class="display-4"><%= @event.title %></h1>
+            <p class="lead"><%= @event.description %></p>
+            <h5 class="card-title">Participation :</h5>
+            <p><%= @event.users.count %></p>
+            <h5 class="card-title">Created by :</h5>
+            <p><%= User.find(@event.admin).profile.full_name%></p>
+            <h5 class="card-title">Début de l'évènement:</h5>
+            <p><%= @event.start_date.to_formatted_s(:long) %></p>
+            <h5 class="card-title">Fin de l'évènement:</h5>
+            <p><%= @event.end_date.to_formatted_s(:long) %></p>
+            <h5 class="card-title">Location:</h5>
+            <p><%= @event.location %></p>
+            <h5 class="card-title">Price:</h5>
+            <p><%= @event.price %> €</p>
+        </div>
+    </div>
+</div>   
