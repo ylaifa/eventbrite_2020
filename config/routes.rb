@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users 
   resources :profiles
   resources :events
+  resources :charges
  
 
   root 'events#index'
