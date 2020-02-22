@@ -28,4 +28,11 @@ class SubscribesController < ApplicationController
             flash[:error] = e.message
             redirect_to @event
     end
+
+    def free_subscribe
+      @event = Event.find(params[:id])
+      @attendance = Attendance.create(user: current_user, event: @event)
+    
+      redirect_to event_path(@event.id)
+    end
 end
