@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'event_pictures/create'
   devise_for :users 
   resources :profiles
-  resources :events
+  resources :events do 
+    resources :pictures, only: [:create]
+  end
   resources :attendances
   
   post "events/subscribe/:id", to: "subscribes#create", as: "subscribes"
