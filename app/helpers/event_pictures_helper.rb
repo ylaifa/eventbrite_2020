@@ -1,2 +1,0 @@
-module EventPicturesHelper
-end
