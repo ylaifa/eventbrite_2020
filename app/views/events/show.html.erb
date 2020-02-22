@@ -15,6 +15,24 @@
             <p><%= @event.location %></p>
             <h5 class="card-title">Price:</h5>
             <p><%= @event.price %> €</p>
+            <p><%= form_tag subscribes_path do %>
+                <article>
+                    <% if flash[:error].present? %>
+                    <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                    </div>
+                    <% end %>
+                </article>
+
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="Event subscription"
+                        data-amount="<%= @event.price * 100 %>"
+                        data-currency="eur"
+                        data-locale="auto">
+                </script>
+                <% end %>
+            </p>
         </div>
     </div>
 </div>   
