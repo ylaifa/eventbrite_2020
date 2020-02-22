@@ -22,6 +22,14 @@ class Event < ApplicationRecord
         start_date + duration * 60
     end
 
+    def participale?(user)
+        users.include?(user)
+    end
+
+    def is_free?
+        price == 0
+    end
+
     private
     
     def date_passed
