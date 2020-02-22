@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :only_creator, only: [:edit, :update, :destroy]
   
   def index
     @events = Event.all
@@ -16,7 +17,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params.merge(admin: current_user.id))
     @event.errors.full_messages
-    Attendance.create(user: current_user, event: @event)
     if @event.save
     
     redirect_to event_path(id: @event)
@@ -49,5 +49,13 @@ class EventsController < ApplicationController
 
   def event_params
      params.require(:event).permit(:start_date, :duration, :description, :title, :price, :location, :admin)
+  end
+
+  def only_creator
+    event = Event.find(params[:id])
+    unless current_user.id == event.admin
+      flash[:notice] = "Vous n'êtes pas le créateur de l'évènement => Impossilble de le modifier."
+     redirect_to root_path
+    end
   end
 end
