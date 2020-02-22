@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users 
   resources :profiles
   resources :events
-
+  resources :attendances
   post "events/subscribe/:id", to: "subscribes#create", as: "subscribes"
  
   root 'events#index'
