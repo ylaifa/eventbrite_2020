@@ -40,5 +40,11 @@
                 <% end %>
             <% end %>
         </div>
+        <%if @event.picture.attached?%>
+        <%= image_tag @event.picture, alt: 'picture' %>
+        <%else%>
+        <p>=== Il n'y a pas encore d'image lié à cet évènement ===</p>
+        <%end%>
+
     </div>
 </div>   
