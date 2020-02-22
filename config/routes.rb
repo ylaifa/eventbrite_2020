@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'event_pictures/create'
   devise_for :users 
   resources :profiles
   resources :events
