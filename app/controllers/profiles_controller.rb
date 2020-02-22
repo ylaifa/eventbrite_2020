@@ -42,4 +42,8 @@ class ProfilesController < ApplicationController
   def profile_params 
     params.require(:profile).permit(:first_name, :last_name, :description)
   end
+
+  def check_privileges!
+    redirect_to root_path, notice: "You dont have enough permissions" unless current_user == Profile.find(params[:id]).user
+  end
 end
