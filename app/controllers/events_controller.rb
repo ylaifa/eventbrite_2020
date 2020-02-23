@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     @event.errors.full_messages
     if @event.save
     
-    redirect_to event_path(id: @event)
+    redirect_to event_path(id: @event), notice: "Your Event was created"
     else
     render 'new'
     end
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
      if @event.update(event_params) 
 
-      redirect_to root_path
+      redirect_to event_path(id: @event), notice: "Your Event was updated"
     else
       render :edit
     end
