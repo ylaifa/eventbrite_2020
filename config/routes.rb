@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users 
-  resources :profiles
+  resources :profiles do 
+    resources :avatars, only: [:create]
+  end
   resources :events do 
     resources :pictures, only: [:create]
   end
