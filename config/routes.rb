@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users 
-  resources :profiles do 
-    resources :avatars, only: [:create]
-  end
-  resources :events do 
-    resources :pictures, only: [:create]
-  end
+  resources :profiles 
+  resources :events 
   resources :attendances
   
   post "events/subscribe/:id", to: "subscribes#create", as: "subscribes"
