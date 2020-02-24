@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params) 
 
-     redirect_to profile_path(id: @profile), notice: "Your profile was updated"
+     redirect_to @profile, notice: "Your profile was updated"
    else
      render :edit
    end
