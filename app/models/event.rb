@@ -1,5 +1,4 @@
 class Event < ApplicationRecord
-    # scope :administrator, -> { where(admin: current_user.id ) }
       
     validates :title, presence: true, length: { in: 4..140 }
     validates :description, presence: true, length: { in: 20..1000 }
@@ -29,6 +28,10 @@ class Event < ApplicationRecord
 
     def is_free?
         price == 0
+    end
+
+    def creator
+        User.find(self.admin)
     end
 
     private
