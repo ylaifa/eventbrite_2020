@@ -28,6 +28,8 @@
                 <%= f.label :location, "Localité:" %><br />
                 <%= f.text_field :location, class: "form-control" %>
                 </div>   
+                <%= f.label :download_image %>
+                <%= f.file_field :picture %>
                 <div class="actions mt-5">
                 <p> <%= f.submit "Modifier", class: "btn btn-lg btn-primary btn-block" %> <%= link_to 'Delete the event', event_path(id: @event), method: :delete, data: { confirm: 'Are you sure?' } %> </p>
                 </div>                

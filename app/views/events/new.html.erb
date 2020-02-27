@@ -29,6 +29,8 @@
                 <%= f.label :location, "Localité:" %><br />
                 <%= f.text_field :location, class: "form-control" %>
                 </div>   
+                <%= f.label :upload_image %>
+                <%= f.file_field :picture %>
                 <div class="actions mt-5">
                 <%= f.submit "Créer", class: "btn btn-lg btn-primary btn-block" %>
                 </div>                

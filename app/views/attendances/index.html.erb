@@ -1,13 +1,37 @@
-<div class="col col-6 mx-auto text-dark">
-	<h2 class="mt-3"><%= @event.title %> - Guest list</h2>
-    <p><%= link_to "Edit your event", edit_event_path(@event), class: "btn btn-secondary", role: "button" %></p>
-	<ul>
-		<% @attendances.each do |user| %>
-            <div class="card-body">
-            <p class="list-group-item">First Name: <%= user.profile.first_name %></p>
-            <p class="list-group-item">Last Name: <%= user.profile.last_name %></p>
-            <p class="list-group-item">Email: <%= user.email %></p>
+<div class="container">
+  <div class="row">
+      <h1 class="mt-4 mb-3">Guest list for Event : <%= @event.title %>  <%= link_to "Edit your event", edit_event_path(@event), class: "btn btn-outline-secondary", role: "button" %></h1>
+        <% if @attendances.blank? %>
+            <h2>You are not guest for this event</h2>
+        <% else %>
+            <div class="container">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">First Name:</th>
+                    <th scope="col">Last Name:</th>
+                    <th scope="col">Email:</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% @attendances.each do |user| %>
+                    <tr>
+                        <td>
+                        <%if user.profile.avatar.attached?%>
+                                <%= link_to (image_tag user.profile.avatar.variant(resize: "100x100"), alt: 'picture') %>
+                            <%else%>
+                                <%= link_to image_tag("default_profile_avatar.png", size: "100x100") %>
+                            <%end%>
+                        </td>
+                        <td><%= user.profile.first_name %></td>
+                        <td><%= user.profile.last_name %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
             </div>
         <% end %>
-	</ul>
+  </div>
 </div>

@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @events = Event.where(admin: current_user.id)
   end
 
   def new
@@ -13,7 +14,6 @@ class ProfilesController < ApplicationController
   def create 
     @profile = Profile.new
     if @profile.create(profile_params) 
-
      redirect_to root_path
    else
      render :new
@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params) 
 
-     redirect_to root_path
+     redirect_to @profile, notice: "Your profile was updated"
    else
      render :edit
    end
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   private 
 
   def profile_params 
-    params.require(:profile).permit(:first_name, :last_name, :description)
+    params.require(:profile).permit(:first_name, :last_name, :description, :avatar)
   end
 
   def check_privileges!

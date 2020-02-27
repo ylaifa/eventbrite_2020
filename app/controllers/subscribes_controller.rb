@@ -1,4 +1,6 @@
 class SubscribesController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :free_subscribe]
+    
     def new
     end
 

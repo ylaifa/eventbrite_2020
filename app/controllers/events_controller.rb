@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event.errors.full_messages
     if @event.save
     
-    redirect_to event_path(id: @event)
+    redirect_to event_path(id: @event), notice: "Your Event was created"
     else
     render 'new'
     end
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
      if @event.update(event_params) 
 
-      redirect_to root_path
+      redirect_to id: @event, notice: "Your Event was updated"
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-     params.require(:event).permit(:start_date, :duration, :description, :title, :price, :location, :admin)
+     params.require(:event).permit(:start_date, :duration, :description, :title, :price, :location, :admin, :picture)
   end
 
   def only_creator

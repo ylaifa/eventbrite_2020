@@ -1,0 +1,22 @@
+<div class="col-sm-6 col-lg-3 mt-3">
+    <div class="card card-cascade narrower">
+        <div class="embed-responsive embed-responsive-16by9">
+                <%if resource.picture.attached?%>
+                    <%= link_to (image_tag resource.picture, class: "card-img-top embed-responsive-item", alt: 'picture'), event_path(resource.id) %>
+                <%else%>
+                    <%= link_to image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKDGeTN40r8Ai9YE2sejGqQzJO4bMiLXy6aJKpbeSCf8iZYfDD"), event_path(resource.id), {class: "card-img-top embed-responsive-item"} %>
+                <%end%>
+        </div>
+        <div class="card-body">
+            <div class="text-muted mb-2">
+            <%= date(resource.start_date) %>
+            </div>
+            <div class="center mb-2">
+                <strong><%= resource.title %></strong>
+            </div>
+            <div>
+                <p class="center text-capitalize"><%= resource.location %></p>
+            </div> 
+        </div> 
+    </div>
+</div>
